@@ -1,7 +1,7 @@
 export const typeDefs = `#graphql
 
 type User{
-id:ID!
+_id:ID!
 firstName:String!
 lastName:String!
 email:String!
@@ -19,13 +19,22 @@ type Query {
     grid:String,
     users:[User!]!,
     quotes:[Quotes!]!,
-    user(id:ID!):User!,
+    user(_id:ID!):User!,
     iQuote(by:ID!):[Quotes!]
 
 }
 
 type Mutation{
-    createUserDummy(firstName:String!,lastName:String!,email:String!,password:String!):User!,
+    createUserDummy(newUser:userInput!):User!,
 
 }
+
+input userInput{
+firstName:String!,
+lastName:String!,
+email:String!,
+password:String!
+
+}
+
 `
